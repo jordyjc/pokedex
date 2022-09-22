@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokedex</title>
+    <link href="./assets/css/styles.css" rel="stylesheet" type="text/css" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body onload="changeColor()">
+    <div class="header">
+      <button class="poke" id="pokeball-center"></button>
+    </div>
+    <a class="poke-title"
+      ><img
+        src="https://fontmeme.com/permalink/220921/77973083e0c55d350f80d61dd471922b.png"
+        alt="pokemon-font"
+    /></a>
+
+    <div class="forms-container">
+      <form method="post" id="form-number">
+        <div class="card text-white bg-primary mb-3" style="max-width: 18rem">
+          <div class="card-header">Buscar</div>
+          <div class="card-body">
+            <h5 class="card-title">Buscar un Pokémon por su número.</h5>
+            <label for="input-number">Número de Pokemón (1 – 905)</label>
+            <input
+              id="input-number"
+              type="number"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              name="input-number"
+              min="1"
+              max="905"
+              required
+            />
+          </div>
+          <button
+            id="submit-number"
+            type="submit"
+            name="submit-number"
+            class="btn search btn-outline-primary"
+          >
+            Buscar Pokemón
+          </button>
+        </div>
+      </form>
+
+      <form method="post" id="form-random">
+        <div class="card text-white bg-success mb-3" style="max-width: 18rem; height: 14rem;">
+          <div class="card-header">Aleatorio</div>
+          <div class="card-body">
+            <h5 class="card-title">Muestra un Pokémon aleatorio.</h5>
+            <button
+              id="submit-random"
+              type="submit"
+              name="submit-random"
+              class="btn btn-outline-success"
+            >
+              Mostrar Pokemón
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div id="cards"></div>
+
+    <script id="card-template" type="text/x-handlebars-template">
+      <figure class="card-pokemon card--{{type}}">
+        <div class="card__image-container">
+          <img src="{{imageAddress}}" alt="{{name}}" class="card__image" />
+        </div>
+
+        <figcaption class="card__caption">
+          <div class="card__name__id">
+            <h1 class="card__id"> {{id}} </h1>
+            <h1 class="card__name"> {{name}}</h1>
+          </div>
+
+          </h4>
+          <h3 class="card__type">
+            {{type}}
+          </h3>
+
+          <table class="card__stats">
+            <tr>
+              <th>HP</th>
+              <td>{{hp}}</td>
+            </tr>
+            <tr>
+              <th>Attack</th>
+              <td>{{attack}}</td>
+            </tr>
+
+            <tr>
+              <th>Defense</th>
+              <td>{{defense}}</td>
+            </tr>
+
+            <tr>
+              <th>Special Attack</th>
+              <td>{{spAttack}}</td>
+            </tr>
+            <tr>
+              <th>Special Defense</th>
+              <td>{{spDefense}}</td>
+            </tr>
+            <tr>
+              <th>Speed</th>
+              <td>{{speed}}</td>
+            </tr>
+          </table>
+
+          <div class="card__abilities">
+            <h4 class="card__ability">
+              <span class="card__label">Ability</span>
+              {{ability1}}
+            </h4>
+            <h4 class="card__ability">
+              <span class="card__label">Hidden Ability</span>
+              {{ability2}}
+            </h4>
+          </div>
+        </figcaption>
+      </figure>
+    </script>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+  <script src="./assets/js/main.js"></script>
+</html>

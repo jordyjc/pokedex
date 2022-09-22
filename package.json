@@ -1,0 +1,11 @@
+{
+  "name": "pokedex",
+  "version": "1.0.0",
+  "description": "pokedex v1.0.0",
+  "main": "index",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jjc",
+  "license": "ISC"
+}
