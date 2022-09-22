@@ -12,10 +12,8 @@ function changeColor() {
   if (!nIntervId) {
     let myDivObjBgColor = window.getComputedStyle(back).backgroundColor;
     if (myDivObjBgColor === red) {
-      console.log("rojo");
       nIntervId = setInterval(flash, 2000);
     } else {
-      console.log("blanco");
       nIntervId = setInterval(flash, 30000);
     }
   }
@@ -23,8 +21,6 @@ function changeColor() {
 
 function flash() {
   refresh++;
-  console.log(refresh);
-
   const oElem = document.getElementById("pokeball-center");
   let myDivObjBgColor = window.getComputedStyle(back).backgroundColor;
 
@@ -32,14 +28,11 @@ function flash() {
     oElem.style.background = red;
     // Remove current Pokémon
     list.querySelectorAll(":scope > *").forEach((pokemon) => pokemon.remove());
-
-    // Fetch the Pokémon data using the API
     getPokemonData(getRandomIntInclusive(1, maxPokeNumber));
   } else {
     oElem.style.background = white;
   }
   if ((refresh = 1)) {
-    console.log("paro");
     clearInterval(nIntervId);
     nIntervId = null;
     refresh = 0;
@@ -61,17 +54,9 @@ formNumber.addEventListener("submit", (e) => {
   changeColor();
 
   const inputNumber = e.currentTarget.elements["input-number"];
-
-  // Sanitize and store the number that the user has entered
   const pokeNumber = parseInt(inputNumber.value);
-
-  // Clear the input value
   inputNumber.value = "";
-
-  // Remove current Pokémon
   list.querySelectorAll(":scope > *").forEach((pokemon) => pokemon.remove());
-
-  // Fetch the Pokémon data using the API
   getPokemonData(pokeNumber);
 });
 
@@ -123,8 +108,6 @@ function createPokemon({ id, name, sprites, types, stats, abilities }) {
   ability[0] = capitalizarPrimeraLetra(ability[0].replace("-", " "));
   ability[1] = capitalizarPrimeraLetra(ability[1]?.replace("-", " "));
 
-  console.log(ability);
-
   var pokemonToShow = [
     {
       id: id,
@@ -141,9 +124,6 @@ function createPokemon({ id, name, sprites, types, stats, abilities }) {
       ability2: ability[1],
     },
   ];
-
-  console.log(pokemonToShow);
-
   var source = document.getElementById("card-template").innerHTML;
   var template = Handlebars.compile(source);
   var container = document.getElementById("cards");
