@@ -16,7 +16,7 @@ function changeColor() {
       nIntervId = setInterval(flash, 2000);
     } else {
       console.log("blanco");
-      nIntervId = setInterval(flash, 78000);
+      nIntervId = setInterval(flash, 30000);
     }
   }
 }
